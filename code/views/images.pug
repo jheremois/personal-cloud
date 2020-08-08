@@ -1,0 +1,28 @@
+extends main
+
+block head
+    header
+        .top
+            #menu
+                img(src="icons/menu.png", alt="menu")
+            block directory_tittle
+                h2 /images
+        #down
+            .option
+                a(href="/images") /images
+            .option
+                a(href="/video") /video
+            .option
+                a(href="/audio") /audio
+            .option
+                a(href="/documents") /documents
+    section
+        block directory_select
+            form(action="/images", method="post" enctype="multipart/form-data")
+                label.imag(for="file-upload")
+                    img(src="icons/files.png", alt="")
+                input(id="file-upload" onchange='cambiar()' type="file" name="file")
+                #info ...
+                button
+                    img.save(src="icons/save.png", alt="")
+    script(src="js/main.js")

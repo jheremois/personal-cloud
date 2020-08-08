@@ -1,0 +1,13 @@
+extends images
+
+block directory_tittle
+    h2 /video
+    
+block directory_select
+    form(action="/video", method="post" enctype="multipart/form-data")
+        label.imag(for="file-upload")
+            img(src="icons/files.png", alt="")
+        input(id="file-upload" onchange='cambiar()' type="file" name="file")
+        #info ...
+        button
+            img.save(src="icons/save.png", alt="")
