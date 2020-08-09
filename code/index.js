@@ -3,7 +3,6 @@ const express = require('express')
 const path = require('path')
 const http = require('http')
 const fileUpload = require('express-fileupload')
-const bodyparser = require('body-parser')
 
 
 const app = express()

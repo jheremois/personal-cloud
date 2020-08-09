@@ -27,9 +27,6 @@ body{
     padding: 5% 3%;
     text-decoration: none;
 }
-/*
-    uploader
-*/
 header{
     background-color: #195c88;
 }
@@ -149,9 +146,6 @@ img{
 .fl h5{
     font-size: 100%;
 }
-
-
-
 input{display: none;}
 @media screen and (max-width: 768px){
     .select a{

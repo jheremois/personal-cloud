@@ -18,8 +18,9 @@ module.exports = ()=>{
         router.get(`/${file_type}`, (req,res)=>{
             
             conection.query(`SELECT * FROM ${table}`,(err,result)=>{
-                console.log(result)
+                
                 res.render(file_type, {files: result})
+
             })
             
         })
@@ -40,6 +41,7 @@ module.exports = ()=>{
                 conection.query(`INSERT INTO ${table} SET ?`,{
                     filename: file.name
                 },(err,resul)=> {res.redirect(`/${file_type}`)})
+                
             })
 
         })

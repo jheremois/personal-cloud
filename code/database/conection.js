@@ -10,6 +10,7 @@ const conection = {
     database:  process.env.MYSQL_DATABASE
 }
 
+
 const pool = mysql.createPool(conection)
 
 pool.getConnection((err,conection)=>{
@@ -18,6 +19,9 @@ pool.getConnection((err,conection)=>{
     return;
 })
 
+
 pool.query = promisify(pool.query)
+
+
 
 module.exports = pool
