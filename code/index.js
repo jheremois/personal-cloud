@@ -3,10 +3,11 @@ const express = require('express')
 const path = require('path')
 const http = require('http')
 const fileUpload = require('express-fileupload')
+const morgan = require('morgan')
+
 
 
 const app = express()
-
 
 
 
@@ -18,7 +19,9 @@ app.set('view engine', 'pug')
 app.set('views', path.join(__dirname, 'views'))
 
 
+
 // Middlewares
+app.use(morgan('dev'))
 
 app.use(fileUpload())
 
@@ -28,7 +31,6 @@ env('./.env')
 
 app.use(express.urlencoded({extended: true}))
   
-
 
 
 // Port
@@ -43,7 +45,6 @@ const routes = require('./routes/router')
 const { urlencoded } = require('body-parser')
 
 app.use('/', routes())
-
 
 
 
