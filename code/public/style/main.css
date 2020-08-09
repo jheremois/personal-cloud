@@ -1,7 +1,7 @@
 *{
     margin: 0%;
     padding: 0%;
-    color: #0c0f11;
+    color: #c9d6df;
     font-family: 'Arimo';
 }
 body{
@@ -124,6 +124,34 @@ form button img{
 form button, form label{
     cursor: pointer;
 }
+img{
+    -webkit-filter: invert(100%);
+    filter: invert(100%);
+}
+
+.files{
+    display: flex;
+    justify-content: center;
+    margin: 0% 0% 3% 0%;
+}
+.fl{
+    overflow: auto;
+    width: 80%;
+    padding: 1%;
+    display: flex;
+    align-items: center;
+    background-color: #1a1f22;
+}
+.fl img{
+    width: 2%;
+    padding: 1%;
+}
+.fl h5{
+    font-size: 100%;
+}
+
+
+
 input{display: none;}
 @media screen and (max-width: 768px){
     .select a{
@@ -142,5 +170,9 @@ input{display: none;}
     }
     form{
         padding: 0.5% 3%;
+    }
+    .fl img{
+        width: 5%;
+        padding: 3%;
     }
 }

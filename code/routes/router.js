@@ -1,6 +1,8 @@
 const express = require('express')
-
+const fs = require('fs')
 const router = express.Router()
+
+const conection = require('../database/conection')
 
 module.exports = ()=>{
     
@@ -10,34 +12,48 @@ module.exports = ()=>{
     })
 
 
-    const route = (file_type)=>{
+    const route = (file_type, table)=>{
+
         // render
         router.get(`/${file_type}`, (req,res)=>{
-            res.render(file_type)
+            
+            conection.query(`SELECT * FROM ${table}`,(err,result)=>{
+                console.log(result)
+                res.render(file_type, {files: result})
+            })
+            
         })
-    
+
+
+
+
         // Save:
         router.post(`/${file_type}`, async (req,res)=>{
-        
+
             let file = req.files.file
 
             file.mv(`${process.env.DIREC}/${file_type}/${file.name}`,(err)=>{
                 if(err){
                     return res.status(500).send(err);
                 }
-                res.redirect(`/${file_type}`)
+
+                conection.query(`INSERT INTO ${table} SET ?`,{
+                    filename: file.name
+                },(err,resul)=> {res.redirect(`/${file_type}`)})
             })
+
         })
+
     }
-    
 
-    route('images')
 
-    route('video')
+    route('images', 'images')
 
-    route('audio')
+    route('video', 'video')
 
-    route('documents')
+    route('audio', 'audio')
+
+    route('documents', 'document')
 
 
     return router

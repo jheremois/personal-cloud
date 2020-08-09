@@ -9,13 +9,13 @@ block head
                 h2 /images
         #down
             .option
-                a(href="/images") /images
+                a(href="/images") ../images
             .option
-                a(href="/video") /video
+                a(href="/video") ../video
             .option
-                a(href="/audio") /audio
+                a(href="/audio") ../audio
             .option
-                a(href="/documents") /documents
+                a(href="/documents") ../documents
     section
         block directory_select
             form(action="/images", method="post" enctype="multipart/form-data")
@@ -25,4 +25,9 @@ block head
                 #info ...
                 button
                     img.save(src="icons/save.png", alt="")
+    -for(i= 0; i < files.length; i++)
+        .files
+            .fl
+                img(src="icons/file.png", alt="file")
+                h5= files[i].filename
     script(src="js/main.js")
