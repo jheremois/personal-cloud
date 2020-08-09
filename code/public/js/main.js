@@ -1,8 +1,9 @@
-
 const cambiar = ()=>{
     let pdrs = document.getElementById('file-upload').files[0].name;
     document.getElementById('info').innerHTML = pdrs;
 }
+
+
 
 const menu = document.getElementById('down')
 const menu_buton = document.getElementById('menu')

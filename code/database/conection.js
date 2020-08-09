@@ -1,6 +1,6 @@
 const mysql = require('mysql')
-
 const {promisify} = require('util')
+
 
 
 const conection = {
@@ -11,6 +11,7 @@ const conection = {
 }
 
 
+
 const pool = mysql.createPool(conection)
 
 pool.getConnection((err,conection)=>{
@@ -18,6 +19,7 @@ pool.getConnection((err,conection)=>{
     console.log('conection')
     return;
 })
+
 
 
 pool.query = promisify(pool.query)
