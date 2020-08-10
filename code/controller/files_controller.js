@@ -1,36 +1,36 @@
 const conection = require('../database/conection')
 
 exports.file_route = class file_route {
-    constructor(router,file_type, table){
+    constructor(router,get_and_post,view_and_table){
         this.router = router,
-        this.file_type = file_type,
-        this.table = table
+        this.get_and_post = get_and_post,
+        this.view_and_table = view_and_table
     }
 
     on(){
-        this.router.get(`/${this.file_type}`, (req,res)=>{
+        this.router.get(this.get_and_post, (req,res)=>{
         
-            conection.query(`SELECT * FROM ${this.table}`,(err,result)=>{
+            conection.query(`SELECT * FROM ${this.view_and_table}`,(err,result)=>{
                 
-                res.render(this.file_type, {files: result})
+                res.render(this.view_and_table, {files: result})
 
             })
         
         })
 
 
-        this.router.post(`/${this.file_type}`, async (req,res)=>{
+        this.router.post(this.get_and_post, async (req,res)=>{
 
             let file = req.files.file
 
-            file.mv(`${process.env.DIREC}/${this.file_type}/${file.name}`,(err)=>{
+            file.mv(`${process.env.DIREC}/${this.view_and_table}/${file.name}`,(err)=>{
                 if(err){
                     return res.status(500).send(err);
                 }
 
-                conection.query(`INSERT INTO ${this.table} SET ?`,{
+                conection.query(`INSERT INTO ${this.view_and_table} SET ?`,{
                     filename: file.name
-                },(err,resul)=> {res.redirect(`/${this.file_type}`)})
+                },(err,resul)=> {res.redirect(this.get_and_post)})
 
             })
 

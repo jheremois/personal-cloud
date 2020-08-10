@@ -1,13 +1,13 @@
 exports.route = class route {
-    constructor(router, direction,view){
+    constructor(router, route,view){
         this.router = router,
-        this.direction = direction,
+        this.route = route,
         this.view = view
     }
 
     on(){
         
-        this.router.get(this.direction, (req,res)=>{
+        this.router.get(this.route, (req,res)=>{
             
         res.render(this.view)
     
