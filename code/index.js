@@ -52,5 +52,5 @@ app.use('/', routes())
 const server = http.createServer(app)
 
 server.listen(port, ()=>{
-    console.log(` hots: ${port}`)
+    console.log(`hots: ${port}`)
 })
