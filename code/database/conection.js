@@ -4,7 +4,7 @@ const {promisify} = require('util')
 
 
 const conection = {
-    host:  'localhost', 
+    host:  process.env.MYSQL_HOST, 
     user:  process.env.MYSQL_USER,
     password:  process.env.MYSQL_PASSWORD, 
     database:  process.env.MYSQL_DATABASE
@@ -16,7 +16,6 @@ const pool = mysql.createPool(conection)
 
 pool.getConnection((err,conection)=>{
     if (conection){conection.release()}
-    console.log('conection')
     return;
 })
 

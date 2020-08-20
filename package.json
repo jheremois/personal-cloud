@@ -14,8 +14,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "node code/index.js",
-    "test": "nodemon code/index.js"
+    "start": "node code/index.js"
   },
   "author": "@jheremois",
   "license": "ISC"
